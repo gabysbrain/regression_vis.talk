@@ -51,7 +51,7 @@ of a D-dimensional vector of input variables"[@bishop:2006]
 ::: {.column width=50%}
 **Geostatistics**
 
-![[@tonkin:2005]](images/geology.png){height=190px}
+![[@tonkin:2002]](images/geology.png){height=190px}
 ::: 
 ::: {.column width=50%}
 **Urban studies**
@@ -61,7 +61,7 @@ of a D-dimensional vector of input variables"[@bishop:2006]
 ::: {.column width=50%}
 **Finance**
 
-![[@constantin:2014]](images/finance.png){height=190px}
+![[@anghelache:2014]](images/finance.png){height=190px}
 :::
 ::: {.column width=50%}
 **Epidemiology**
@@ -218,6 +218,11 @@ the model more efficiently.
 
 ## Thanks!
 
+**Questions?**
+
+t.d.torsney-weir@swansea.ac.uk
+
+![](images/continuous_pipeline.svg){height=250px}
 
 ## References
 
