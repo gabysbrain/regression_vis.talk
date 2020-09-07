@@ -5,7 +5,7 @@ width: 1600
 height: 900
 slideNumber: \'c/t\'
 transition: none
-theme: white
+theme: ttw
 ---
 
 ## Agenda
@@ -167,7 +167,7 @@ the regression model at any point
 :::
 ::::::::: 
 
-::: .notes
+::: notes
 What's cool about tuner is that since we had access to the definition of the
 regression function, we could write a custom renderer for the hyperslice view
 using OpenGL that rendered faster and every pixel was calculated
