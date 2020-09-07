@@ -13,10 +13,10 @@ theme: ttw
 Benefits of treating a regression model itself as the "dataset" for visual
 data analysis
 
-* What are regression algorithms
-* Visualization pipeline (with alternative)
-* Visualization techniques
-* Advantages of what we can do since we have the regression function
+* What are regression algorithms?
+* Visualization/analysis pipeline
+* Overview of slicing
+* Advantages of regression model as dataset
 
 ::: notes
 In this talk I will show an alternative way of looking at how to visualize 
@@ -74,11 +74,32 @@ of a D-dimensional vector of input variables"[@bishop:2006]
 
 **Discrete**
 
-![](images/discrete_pipeline.svg){height=250px}
+![](images/discrete_pipeline.svg){height=650px}
+
+::: notes
+
+* **"Standard"**
+    1. Regression model
+    2. Discretization
+    3. Data table
+    4. Use discrete visualization techniques
+* **Proposed**
+    1. Regression model
+    2. Data is the function
+    3. Continuous visualization/analysis
+
+* Issues:
+    - discrete version can throw away information that may be needed for later (median example)
+    - Sampling might not be sufficient for visualization
+
+:::
+
+
+## Visualization pipelines
 
 **Continuous**
 
-![](images/continuous_pipeline.svg){height=250px}
+![](images/continuous_pipeline.svg){height=650px}
 
 ::: notes
 
@@ -222,7 +243,7 @@ the model more efficiently.
 
 t.d.torsney-weir@swansea.ac.uk
 
-![](images/continuous_pipeline.svg){height=250px}
+![](images/swansea-university-logo.svg){height=200px}
 
 ## References
 
