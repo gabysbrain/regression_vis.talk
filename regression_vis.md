@@ -1,6 +1,7 @@
 ---
 title: Visualization for understanding regression models
 author: Thomas Torsney-Weir
+date: 8 September, 2020
 width: 1600
 height: 900
 slideNumber: \'c/t\'
@@ -8,19 +9,49 @@ transition: none
 theme: ttw
 ---
 
+## Visualization pipelines
+
+**Discrete**
+
+![](images/discrete_pipeline.svg){height=250px}
+
+. . .
+
+**Continuous**
+
+![](images/continuous_pipeline.svg){height=250px}
+
+::: notes
+
+* **"Standard"**
+    1. Regression model
+    2. Discretization
+    3. Data table
+    4. Use discrete visualization techniques
+* **Proposed**
+    1. Regression model
+    2. Data is the function
+    3. Continuous visualization/analysis
+
+* Issues:
+    - discrete version can throw away information that may be needed for later (median example)
+    - Sampling might not be sufficient for visualization
+
+:::
+
+
 ## Agenda
 
 Benefits of treating a regression model itself as the "dataset" for visual
 data analysis
 
 * What are regression algorithms?
-* Visualization/analysis pipeline
 * Overview of slicing
 * Advantages of regression model as dataset
 
 ::: notes
 In this talk I will show an alternative way of looking at how to visualize 
-regression algorithms and some example techniques
+regression algorithms and some example benefits of this approach
 :::
 
 ## What are regression models?
@@ -34,7 +65,6 @@ of a D-dimensional vector of input variables"[@bishop:2006]
 * Important bits:
     - Take a number of factors as input (often continuous)
     - Output is a scalar
-    - Often have a relatively low number of inputs
     - Inputs are often meaningful
     - Conceptually a multi-dimensional surface (manifold)
 :::
@@ -69,55 +99,6 @@ of a D-dimensional vector of input variables"[@bishop:2006]
 ![[@pittavino:2017]](images/epidemiology_bn.jpg){height=190px}
 :::
 :::::::::
-
-## Visualization pipelines
-
-**Discrete**
-
-![](images/discrete_pipeline.svg){height=650px}
-
-::: notes
-
-* **"Standard"**
-    1. Regression model
-    2. Discretization
-    3. Data table
-    4. Use discrete visualization techniques
-* **Proposed**
-    1. Regression model
-    2. Data is the function
-    3. Continuous visualization/analysis
-
-* Issues:
-    - discrete version can throw away information that may be needed for later (median example)
-    - Sampling might not be sufficient for visualization
-
-:::
-
-
-## Visualization pipelines
-
-**Continuous**
-
-![](images/continuous_pipeline.svg){height=650px}
-
-::: notes
-
-* **"Standard"**
-    1. Regression model
-    2. Discretization
-    3. Data table
-    4. Use discrete visualization techniques
-* **Proposed**
-    1. Regression model
-    2. Data is the function
-    3. Continuous visualization/analysis
-
-* Issues:
-    - discrete version can throw away information that may be needed for later (median example)
-    - Sampling might not be sufficient for visualization
-
-:::
 
 ## Slicing
 
@@ -181,9 +162,13 @@ the regression model at any point
 
 ::::::::: {.columns}
 ::: {.column width=50%}
+**3 fps**
+
 ![](movies/3fps_slicing.mov){data-autoplay=true loop=true}
 :::
 ::: {.column width=50%}
+**30 fps**
+
 ![](movies/30fps_slicing.mov){data-autoplay=true loop=true}
 :::
 ::::::::: 
@@ -196,7 +181,7 @@ using OpenGL that rendered faster and every pixel was calculated
 
 ## Fast rendering
 
-Since Tuner used Gaussian process models, we could analyze the geometry of the
+Knowing we were using Gaussian process models, we could analyze the geometry of the
 scene to figure out how to make it run faster
 
 ::::::::: {.columns}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Thomas Torsney-Weir">
+  <title>Visualization for understanding regression models</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/reset.css">
+  <link rel="stylesheet" href="reveal.js/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/theme/ttw.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Visualization for understanding regression models</h1>
+  <p class="author">Thomas Torsney-Weir</p>
+  <p class="date">8 September, 2020</p>
+
+<img class="logo" data-src="images/swansea-university-logo.svg" height="100" />
+</section>
+
+<section id="visualization-pipelines" class="slide level2">
+<h2>Visualization pipelines</h2>
+<p><strong>Discrete</strong></p>
+<p><img data-src="images/discrete_pipeline.svg" height="250" /></p>
+<div class="fragment">
+<p><strong>Continuous</strong></p>
+<p><img data-src="images/continuous_pipeline.svg" height="250" /></p>
+<aside class="notes">
+<ul>
+<li><strong>“Standard”</strong>
+<ol type="1">
+<li>Regression model</li>
+<li>Discretization</li>
+<li>Data table</li>
+<li>Use discrete visualization techniques</li>
+</ol></li>
+<li><strong>Proposed</strong>
+<ol type="1">
+<li>Regression model</li>
+<li>Data is the function</li>
+<li>Continuous visualization/analysis</li>
+</ol></li>
+<li>Issues:
+<ul>
+<li>discrete version can throw away information that may be needed for later (median example)</li>
+<li>Sampling might not be sufficient for visualization</li>
+</ul></li>
+</ul>
+</aside>
+</div>
+</section>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<p>Benefits of treating a regression model itself as the “dataset” for visual data analysis</p>
+<ul>
+<li>What are regression algorithms?</li>
+<li>Overview of slicing</li>
+<li>Advantages of regression model as dataset</li>
+</ul>
+<aside class="notes">
+<p>In this talk I will show an alternative way of looking at how to visualize regression algorithms and some example benefits of this approach</p>
+</aside>
+</section>
+<section id="what-are-regression-models" class="slide level2">
+<h2>What are regression models?</h2>
+<p>“predict the value of one or more <em>continuous</em> target variables given the value of a D-dimensional vector of input variables”<span class="citation" data-cites="bishop:2006">(Bishop 2006)</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Important bits:
+<ul>
+<li>Take a number of factors as input (often continuous)</li>
+<li>Output is a scalar</li>
+<li>Inputs are often meaningful</li>
+<li>Conceptually a multi-dimensional surface (manifold)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/regression.png" /></p>
+</div>
+</div>
+<p><strong>key issue</strong>: how do we understand this multi-dimensional surface?</p>
+</section>
+<section id="application-areas" class="slide level2">
+<h2>Application areas</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Geostatistics</strong></p>
+<figure>
+<img data-src="images/geology.png" height="190" alt="" /><figcaption><span class="citation" data-cites="tonkin:2002">(Tonkin and Larson 2002)</span></figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<p><strong>Urban studies</strong></p>
+<figure>
+<img data-src="images/urban.jpg" height="190" alt="" /><figcaption><span class="citation" data-cites="shairsingh:2019">(Shairsingh et al. 2019)</span></figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<p><strong>Finance</strong></p>
+<figure>
+<img data-src="images/finance.png" height="190" alt="" /><figcaption><span class="citation" data-cites="anghelache:2014">(Anghelache and Anghel 2014)</span></figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<p><strong>Epidemiology</strong></p>
+<figure>
+<img data-src="images/epidemiology_bn.jpg" height="190" alt="" /><figcaption><span class="citation" data-cites="pittavino:2017">(Pittavino et al. 2017)</span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="slicing" class="slide level2">
+<h2>Slicing</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="images/slicing_med.png" /></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Pros</strong>
+<ul>
+<li>Reduces dimensionality</li>
+<li>Easy to understand metaphor</li>
+</ul></li>
+<li><strong>Cons</strong>
+<ul>
+<li>Focus point selection important</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="multi-d-slicing" class="slide level2">
+<h2>Multi-D slicing</h2>
+<svg viewBox="0 0 400 300">
+<svg data-fragment-index="1" viewBox="0 0 400 300">
+<use xlink:href="images/slicing_diagram.svg#layer1">
+</svg>
+<svg class="fragment" data-fragment-index="2" viewBox="0 0 400 300">
+<use xlink:href="images/slicing_diagram.svg#layer4">
+</svg>
+<svg class="fragment" data-fragment-index="3" viewBox="0 0 400 300">
+<use xlink:href="images/slicing_diagram.svg#layer2">
+</svg>
+<svg class="fragment" data-fragment-index="4" viewBox="0 0 400 300">
+<use xlink:href="images/slicing_diagram.svg#layer3">
+</svg>
+</svg>
+</section>
+<section id="slicing-1" class="slide level2">
+<h2>Slicing</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1D</strong></p>
+<figure>
+<img data-src="images/distribution_sp.png" height="450" alt="" /><figcaption>Sliceplorer<span class="citation" data-cites="torsney-weir:2017a">(Torsney-Weir, Sedlmair, and Möller 2017)</span></figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<p><strong>2D</strong></p>
+<figure>
+<img data-src="images/distribution_hs.png" height="450" alt="" /><figcaption>Hyperslice<span class="citation" data-cites="vanwijk:1993">(Wijk and Liere 1993)</span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="benefits-of-pipeline" class="slide level2">
+<h2>Benefits of pipeline</h2>
+<p><img data-src="images/continuous_pipeline.svg" height="250" /></p>
+<ul>
+<li>Fast rendering</li>
+<li>Focus point selection</li>
+</ul>
+</section>
+<section id="fast-rendering" class="slide level2">
+<h2>Fast rendering</h2>
+<p>Because we know the details of the model, the visualization system can execute the regression model at any point</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>3 fps</strong></p>
+<p><video data-src="movies/3fps_slicing.mov" data-autoplay="true" loop="true" controls=""><a href="movies/3fps_slicing.mov">Video</a></video></p>
+</div><div class="column" style="width:50%;">
+<p><strong>30 fps</strong></p>
+<p><video data-src="movies/30fps_slicing.mov" data-autoplay="true" loop="true" controls=""><a href="movies/30fps_slicing.mov">Video</a></video></p>
+</div>
+</div>
+<aside class="notes">
+<p>What’s cool about tuner is that since we had access to the definition of the regression function, we could write a custom renderer for the hyperslice view using OpenGL that rendered faster and every pixel was calculated</p>
+</aside>
+</section>
+<section id="fast-rendering-1" class="slide level2">
+<h2>Fast rendering</h2>
+<p>Knowing we were using Gaussian process models, we could analyze the geometry of the scene to figure out how to make it run faster</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/fast_gp1.png" /></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/fast_gp2.png" /></p>
+</div>
+</div>
+</section>
+<section id="fast-rendering-2" class="slide level2">
+<h2>Fast rendering</h2>
+<p><img data-src="images/gpu_pipeline.png" height="200" /></p>
+<figure>
+<img data-src="images/timing_prediction.png" height="400" alt="" /><figcaption><span class="citation" data-cites="torsney-weir:2017">(Torsney-Weir et al. 2017)</span></figcaption>
+</figure>
+</section>
+<section id="focus-point-selection" class="slide level2">
+<h2>Focus point selection</h2>
+<figure>
+<img data-src="images/sample_slicing.png" alt="" /><figcaption>Focus point sampling using space-filling design<span class="citation" data-cites="torsney-weir:2017a">(Torsney-Weir, Sedlmair, and Möller 2017)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>Sampling is done using a space filling design</p>
+<p>So each line in a subplot corresponds to a single focus point. The advantage is that the user doesn’t need to navigate to get an overview</p>
+</aside>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<p>Treating the regression model itself as the datatype allows us to analyze the model more efficiently.</p>
+<ul>
+<li>Slice-based visualization</li>
+<li>Efficient rendering</li>
+<li>Control of sampling</li>
+</ul>
+<p><img data-src="images/continuous_pipeline.svg" /></p>
+</section>
+<section id="thanks" class="slide level2">
+<h2>Thanks!</h2>
+<p><strong>Questions?</strong></p>
+<p>t.d.torsney-weir@swansea.ac.uk</p>
+<p><img data-src="images/swansea-university-logo.svg" height="200" /></p>
+</section>
+<section id="references" class="slide level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-anghelache:2014">
+<p>Anghelache, Constantin, and Mădălina Gabriela Anghel. 2014. “Using the Regression Model in the Analysis of Financial Instruments Portfolios.” <em>Procedia Economics and Finance</em>, International Conference on Applied Statistics (ICAS) 2013, 10 (January): 324–29. <a href="https://doi.org/10.1016/S2212-5671(14)00308-6">https://doi.org/10.1016/S2212-5671(14)00308-6</a>.</p>
+</div>
+<div id="ref-bishop:2006">
+<p>Bishop, Christopher M. 2006. <em>Pattern Recognition and Machine Learning (Information Science and Statistics)</em>. Secaucus, NJ, USA: Springer-Verlag New York, Inc.</p>
+</div>
+<div id="ref-pittavino:2017">
+<p>Pittavino, M., A. Dreyfus, C. Heuer, J. Benschop, P. Wilson, J. Collins-Emerson, P. R. Torgerson, and R. Furrer. 2017. “Comparison Between Generalized Linear Modelling and Additive Bayesian Network; Identification of Factors Associated with the Incidence of Antibodies Against Leptospira Interrogans Sv Pomona in Meat Workers in New Zealand.” <em>Acta Tropica</em> 173 (September): 191–99. <a href="https://doi.org/10.1016/j.actatropica.2017.04.034">https://doi.org/10.1016/j.actatropica.2017.04.034</a>.</p>
+</div>
+<div id="ref-shairsingh:2019">
+<p>Shairsingh, Kerolyn K., Cheol-Heon Jeong, Jonathan M. Wang, Jeffrey R. Brook, and Greg J. Evans. 2019. “Urban Land Use Regression Models: Can Temporal Deconvolution of Traffic Pollution Measurements Extend the Urban LUR to Suburban Areas?” <em>Atmospheric Environment</em> 196 (January): 143–51. <a href="https://doi.org/10.1016/j.atmosenv.2018.10.013">https://doi.org/10.1016/j.atmosenv.2018.10.013</a>.</p>
+</div>
+<div id="ref-tonkin:2002">
+<p>Tonkin, Matthew J., and Steven P. Larson. 2002. “Kriging Water Levels with a Regional-Linear and Point-Logarithmic Drift.” <em>Groundwater</em> 40 (2): 185–93. <a href="https://doi.org/10.1111/j.1745-6584.2002.tb02503.x">https://doi.org/10.1111/j.1745-6584.2002.tb02503.x</a>.</p>
+</div>
+<div id="ref-torsney-weir:2017">
+<p>Torsney-Weir, Thomas, Steven Bergner, Derek Bingham, and Torsten Möller. 2017. “Predicting the Interactive Rendering Time Threshold of Gaussian Process Models with HyperSlice.” <em>IEEE Transactions on Visualization and Computer Graphics</em> 23 (2): 1111–23. <a href="https://doi.org/10.1109/TVCG.2016.2532333">https://doi.org/10.1109/TVCG.2016.2532333</a>.</p>
+</div>
+<div id="ref-torsney-weir:2017a">
+<p>Torsney-Weir, Thomas, Michael Sedlmair, and Torsten Möller. 2017. “Sliceplorer: 1D Slices for Multi-Dimensional Continuous Functions.” <em>Computer Graphics Forum</em> 36 (3): 167–77. <a href="https://doi.org/10.1111/cgf.13177">https://doi.org/10.1111/cgf.13177</a>.</p>
+</div>
+<div id="ref-vanwijk:1993">
+<p>Wijk, Jarke J. van, and Robert van Liere. 1993. “HyperSlice: Visualization of Scalar Functions of Many Variables.” In <em>Proceedings of the 4th Conference on Visualization</em>, 119–25. IEEE Computer Society. <a href="https://doi.org/10.1109/VISUAL.1993.398859">https://doi.org/10.1109/VISUAL.1993.398859</a>.</p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/reveal.js"></script>
+	<script src="reveal.js/reveal.js"></script>
+	<script src="reveal.js/plugin/notes/notes.js"></script>
+	<script src="reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="reveal.js/plugin/highlight/highlight.js"></script>
+	<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: false,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+        height: 900,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+
+    </body>
+</html>
